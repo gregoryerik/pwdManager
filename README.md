@@ -40,3 +40,8 @@ to load setup in first time mode. However, a last resort safety feature is to wa
 ## Suggestions
 
 If you continue to use this program on a regular basis, consider creating a custom bash command to run the program from the terminal easily.
+
+## TODO
+
+- Update the main file to use the prefixes instead of hard coding each colour. Possibly add new prefixes for that use
+- Pillow issue with current version
