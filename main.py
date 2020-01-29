@@ -59,15 +59,17 @@ class Setup(Base):
 
 	def __init__(self):
 		super().__init__()
-		#Create the configuration data:
-		self.create_config()
 		# Startup screen stuff
 		self.load_screen_details()
 		# Check if first time setup
-		if self.config_data['account']['first-time']:
-			print(pfx.NOTE + "Running first time setup. This will erase pwdManager database data if one exists.")
+		if self.config_data['account']['reset']:
+			msgs = ["Running RESET (Create New) Mode. This will erase pwdManager database data if one exists.",
+			 "If this is first time setup, ignore warning and continue"]
+			for msg in msgs:
+				print(pfx.NOTE + msg)
 			exit_loop = False
 
+			## Infinite loop of asking whether or not to run setup
 			while not exit_loop:
 				start_setup = input(pfx.WARNING + "Are you sure you wish to begin setup [y/n]? ").lower()
 				if start_setup not in ['y', 'n']:
@@ -75,17 +77,12 @@ class Setup(Base):
 					continue
 				exit_loop = True
 				if start_setup == "y":
-					print(pfx.NOTE + "Running Setup...")
-
+					print(pfx.SUCCESS + "Running Setup...")
+					
 
 				else:
 					print(pfx.SUCCESS +"Setup aborted!")
 
-	""" 
-	TODO: MAKE THIS GENERATE ALL NEEDED CONFIG 
-	"""
-	def create_config(self):
-		pass
 
 
 class Run(Base):

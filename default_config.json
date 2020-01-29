@@ -1,6 +1,6 @@
 {
     "version": "0.1",
-    "author": "lightningb4",
+    "author": "gregoryerik",
     "date-created": "31/12/2019",
     "last-update": "28/01/2020",
     "date-format": "dd/mm/yyyy",
@@ -8,8 +8,7 @@
         "clear-on-start": true
     },
     "account": {
-        "first-time": true,
-        "reset": false
+        "reset": true
     },
     "database": {
         "database_name": "sqlite://data_storage.db"

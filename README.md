@@ -45,3 +45,4 @@ If you continue to use this program on a regular basis, consider creating a cust
 
 - Update the main file to use the prefixes instead of hard coding each colour. Possibly add new prefixes for that use
 - Pillow issue with current version
+- Implement logger

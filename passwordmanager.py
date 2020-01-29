@@ -10,8 +10,8 @@ def load_data():
         with open(cwd) as json_file:
             data = json.load(json_file)
             return data
-    except Exception as e:
-        print(e)
+    except:
+        # When logging is implemented, catch the exception and log it to the file
         return False
 
 # Lets the program know if the user forgot to rename the config file
@@ -24,7 +24,7 @@ def failedToRenameConfig():
 if __name__ == "__main__":
     data = load_data()
     if data is not False:
-        first = data["account"]["first-time"]
+        first = data["account"]["reset"]
         if first:
             setup = main.Setup()
         else:
@@ -37,12 +37,3 @@ if __name__ == "__main__":
             messages = ["Could not read the configuration file.", "Default config.json file is not found.", "Download the default configuration json file from GitHub", "https://github.com/gregoryerik/pwdManager/blob/master/default_config.json"]
             for message in messages:
                 print(pfx.NOTE + message)
-
-            manual = input("Manual start? (y/n) ").lower()
-            if manual in ["y", "n"]:
-                if manual == "y":
-                    print("Program paused to allow for editing of configuration file.")
-                    input("Press enter when ready to continue.")
-                
-            else:
-                print("That was not what we agreed you would type >:(")
