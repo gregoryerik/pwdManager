@@ -28,7 +28,9 @@ After downloading the project install the requirements
 ```
 python3 -m pip install requirements.txt --user
 ```
-Once that has completed
+Once that has completed:
+
+Rename the __default_config.json__ file to __config.json__ 
 ```
 python3 passwordmanager.py
 ```

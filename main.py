@@ -1,6 +1,4 @@
 """
-RUN ME FIRST
-
 @author: lightningb4
 @date: 31/12/2019
 

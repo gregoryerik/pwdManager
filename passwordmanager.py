@@ -20,12 +20,14 @@ if __name__ == "__main__":
         if first:
             setup = main.Setup()
         else:
-            run = main.Run()   
+            run = main.Run()
 
     else:
-        manual = input("Manual start? (y/n) ")
-        if manual.lower() in ["y", "n"]:
-            pass
+        manual = input("Manual start? (y/n) ").lower()
+        if manual in ["y", "n"]:
+            if manual == "y":
+                print("Program paused to allow for editing of configuration file.")
+                input("Press enter when ready to continue.")
             
         else:
             print("That was not what we agreed you would type >:(")

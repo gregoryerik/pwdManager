@@ -1,0 +1,17 @@
+{
+    "version": "0.1",
+    "author": "lightningb4",
+    "date-created": "31/12/2019",
+    "last-update": "28/01/2020",
+    "date-format": "dd/mm/yyyy",
+    "settings": {
+        "clear-on-start": true
+    },
+    "account": {
+        "first-time": true,
+        "reset": false
+    },
+    "database": {
+        "database_name": "sqlite://data_storage.db"
+    }
+}
