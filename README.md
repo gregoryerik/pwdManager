@@ -1,10 +1,10 @@
 # Password Manager
 ## Basic Information
-**Author**: [*lightningb4*](https://github.com/gregoryerik)
+**Author**: [*gregoryerik*](https://github.com/gregoryerik)
 
 **Date Created**: *31/12/2019*
 
-**Last Updated**: *11/01/2020*
+**Last Updated**: *01/2020*
 
 **Version**: *0.1*
 
@@ -44,5 +44,5 @@ If you continue to use this program on a regular basis, consider creating a cust
 ## TODO
 
 - Update the main file to use the prefixes instead of hard coding each colour. Possibly add new prefixes for that use
-- Pillow issue with current version
+- ~~Pillow issue with current version~~
 - Implement logger
