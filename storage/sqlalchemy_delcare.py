@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 import json
 import tools.prefix as pfx
+from tools import configuration
 
 Base = declarative_base()
 
@@ -19,16 +20,8 @@ class Account(Base):
     encrypted = Column(String(500), nullable=False)
     group_id = Column(Integer, ForeignKey("group.id"))
 
-def __load_data():
-		try:
-			with open("../config.json") as json_file:
-				data = json.load(json_file)
-				return data
-		except FileNotFoundError:
-			return False
-
 def create():
-    data = __load_data()
+    data = configuration.load_data()
     if data is not False:
         database_name = data["database"]["database_name"]
         engine = create_engine(database_name)

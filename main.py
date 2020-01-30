@@ -9,22 +9,14 @@ import json
 import os
 import time
 from random import choice
+from tools import configuration
 
 class Base:
 
 	def __init__(self):
-		self.config_data = self.load_data()
+		failed_message = "Oops. Looks like the config file doesn't exist. Has it been renamed? Moved?"
+		self.config_data = configuration.load_data(failed_message)
 		print(self.config_data)
-
-	def load_data(self):
-		try:
-			cwd = os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.json")
-			with open(cwd) as json_file:
-				data = json.load(json_file)
-				return data
-		except FileNotFoundError:
-			print("Oops. Looks like the config file doesn't exist. Has it been renamed? Moved?")
-			return False
 
 	def load_screen_details(self):
 		print(f"SETUP: {self.config_data}")
