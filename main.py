@@ -10,6 +10,7 @@ import os
 import time
 from random import choice
 from tools import configuration
+from storage import sqlalchemy_delcare as sql_dec
 
 class Base:
 
@@ -69,12 +70,14 @@ class Setup(Base):
 					continue
 				exit_loop = True
 				if start_setup == "y":
-					print(pfx.SUCCESS + "Running Setup...")
-					
-
+					self.all_setup_actions()
 				else:
 					print(pfx.SUCCESS +"Setup aborted!")
 
+	## Here is where all of the setup actions should run from
+	def all_setup_actions(self):
+		print(pfx.SUCCESS + "Running Setup...")
+		sql_dec.create()
 
 
 class Run(Base):

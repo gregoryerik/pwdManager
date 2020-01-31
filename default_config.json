@@ -11,6 +11,6 @@
         "reset": true
     },
     "database": {
-        "database_name": "sqlite://data_storage.db"
+        "database_name": "data_storage.db"
     }
 }
