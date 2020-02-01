@@ -131,4 +131,4 @@ dmypy.json
 # Password Manager settings
 config.json
 .vscode
-
+data_storage.db

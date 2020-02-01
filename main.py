@@ -56,8 +56,14 @@ class Setup(Base):
 		self.load_screen_details()
 		# Check if first time setup
 		if self.config_data['account']['reset']:
-			msgs = ["Running RESET (Create New) Mode. This will erase pwdManager database data if one exists.",
+			msgs = []
+
+			if not configuration.database_exists():
+				msgs = ["Running first time setup.", "Database will be created as one has not been detected."]
+			else:
+				msgs = ["Running RESET (Create New) Mode. This will erase pwdManager database data if one exists.",
 			 "If this is first time setup, ignore warning and continue"]
+
 			for msg in msgs:
 				print(pfx.NOTE + msg)
 			exit_loop = False

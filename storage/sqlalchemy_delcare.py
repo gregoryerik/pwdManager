@@ -27,15 +27,15 @@ def log_OK():
 def log_FAIL():
     print("FAILED")
 
-def get_group(meta):
+def make_group(meta):
     group = Table("group", meta,
     Column("id", Integer, primary_key=True),
     Column("name", String)
     )
 
-    return group
+    #return group ## Dont need 
 
-def get_account(meta):
+def make_account(meta):
     account = Table("account", meta,
     Column("id", Integer, primary_key=True),
     Column("name", String),
@@ -43,12 +43,7 @@ def get_account(meta):
     Column("group_id", Integer, ForeignKey("group.id"))
     )
 
-    return account
-
-def get_database_name():
-    data = configuration.load_data()
-    file_name = data["database"]["database_name"]
-    absolute_path = os.path.abspath(os.path.join(__file__, "../"))
+    # return account ## Doesnt seem like I need this just yet
 
 def create():
     data = configuration.load_data()
@@ -67,8 +62,8 @@ def create():
         meta = MetaData()
         log_OK()
 
-        group = get_group(meta)
-        account = get_account(meta)
+        make_group(meta)
+        make_account(meta)
 
         log("Creating database:")
         meta.create_all(engine)
