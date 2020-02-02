@@ -2,8 +2,10 @@
 import json
 import main
 import os
+import sys
 import tools.prefix as pfx
 from tools import configuration 
+
 # Lets the program know if the user forgot to rename the config file
 def failedToRenameConfig():
     config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "default_config.json")
@@ -12,6 +14,9 @@ def failedToRenameConfig():
     return False
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        print(sys.argv[1:])
+    
     data = configuration.load_data()
     if data is not False:
         first = data["account"]["reset"]

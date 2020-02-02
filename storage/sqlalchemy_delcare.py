@@ -28,7 +28,8 @@ def log_FAIL():
     print("FAILED")
 
 def make_group(meta):
-    group = Table("group", meta,
+    # Same comment as the make_account function
+    Table("group", meta,
     Column("id", Integer, primary_key=True),
     Column("name", String)
     )
@@ -36,7 +37,9 @@ def make_group(meta):
     #return group ## Dont need 
 
 def make_account(meta):
-    account = Table("account", meta,
+    # Can assign this to a variable and return it
+    # Dont need it just yet
+    Table("account", meta,
     Column("id", Integer, primary_key=True),
     Column("name", String),
     Column("encrypted", String),

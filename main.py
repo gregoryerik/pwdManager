@@ -77,6 +77,8 @@ class Setup(Base):
 				exit_loop = True
 				if start_setup == "y":
 					self.all_setup_actions()
+					print(pfx.SUCCESS + "Setup finished! Running main body.")
+					r = Run()
 				else:
 					print(pfx.SUCCESS +"Setup aborted!")
 
@@ -85,8 +87,43 @@ class Setup(Base):
 		print(pfx.SUCCESS + "Running Setup...")
 		sql_dec.create()
 
+		data = configuration.load_data()
+		data["account"]["reset"] = False
+
+		configuration.update_data(data)
+
 
 class Run(Base):
 
-	def _init__(self):
+	def __init__(self):
+		super().__init__()
+		os.system("clear")
+		self.exit_condition = False
+
 		self.load_screen_details()
+		self.mainloop()
+	
+	def mainloop(self):
+		prefix = "pwdmn [*] "
+		while not self.exit_condition:
+			command_in = input(prefix)
+			self.handle_command(command_in)
+
+		print("Program exited")
+
+	def get_commands(self):
+		commands = {"quit": self.quit, "help": self.help}
+		return commands
+
+	def handle_command(self, command):
+		commands = self.get_commands()
+		if command in commands.keys():
+			commands[command]()
+
+	def help(self):
+		messages = ["Help messages"]
+		for message in messages:
+			print(message)
+	
+	def quit(self):
+		self.exit_condition = True
