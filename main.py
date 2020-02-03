@@ -10,6 +10,7 @@ import os
 import time
 from random import choice
 from tools import configuration
+from tools import action
 from storage import sqlalchemy_delcare as sql_dec
 
 class Base:
@@ -78,7 +79,7 @@ class Setup(Base):
 				if start_setup == "y":
 					self.all_setup_actions()
 					print(pfx.SUCCESS + "Setup finished! Running main body.")
-					r = Run()
+					Run()
 				else:
 					print(pfx.SUCCESS +"Setup aborted!")
 
@@ -105,25 +106,13 @@ class Run(Base):
 	
 	def mainloop(self):
 		prefix = "pwdmn [*] "
+		commandHandler = action.Command()
 		while not self.exit_condition:
 			command_in = input(prefix)
-			self.handle_command(command_in)
+			commandHandler.set_command(command_in)
+			commandHandler.handle_command()
 
 		print("Program exited")
 
-	def get_commands(self):
-		commands = {"quit": self.quit, "help": self.help}
-		return commands
 
-	def handle_command(self, command):
-		commands = self.get_commands()
-		if command in commands.keys():
-			commands[command]()
 
-	def help(self):
-		messages = ["Help messages"]
-		for message in messages:
-			print(message)
-	
-	def quit(self):
-		self.exit_condition = True
