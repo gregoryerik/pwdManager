@@ -112,6 +112,8 @@ class Run(Base):
 			commandHandler.set_command(command_in)
 			commandHandler.handle_command()
 
+			self.exit_condition = commandHandler.exit_condition 
+
 		print("Program exited")
 
 

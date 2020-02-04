@@ -8,7 +8,8 @@
         "clear-on-start": true
     },
     "account": {
-        "reset": true
+        "reset": true,
+        "key_location": "None"
     },
     "database": {
         "database_name": "data_storage.db"

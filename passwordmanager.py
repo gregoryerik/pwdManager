@@ -5,6 +5,7 @@ import os
 import sys
 import tools.prefix as pfx
 from tools import configuration 
+from tools import action
 
 # Lets the program know if the user forgot to rename the config file
 def failedToRenameConfig():
@@ -13,17 +14,28 @@ def failedToRenameConfig():
         return True
     return False
 
-if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        print(sys.argv[1:])
-    
+def need_setup_mode():
     data = configuration.load_data()
     if data is not False:
-        first = data["account"]["reset"]
-        if first:
-            setup = main.Setup()
+        if data["account"]["reset"]:
+            return True
+        return False
+    return None
+
+if __name__ == "__main__":
+    
+    setup_mode = need_setup_mode()
+    single_mode = True if len(sys.argv) > 1 else False
+
+
+    if setup_mode is not None:
+        if setup_mode:
+            main.Setup()
         else:
-            run = main.Run()
+            if single_mode:
+                action.SingleAction()
+            else:
+                main.Run()
 
     else:
         if failedToRenameConfig():
