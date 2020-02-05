@@ -6,6 +6,7 @@ class Command:
     def __init__(self, command=None):
         self.command = command
         self.attachment = None
+        self.exit_condition = False
     
     def attach_secondary(self, attachment):
         self.attachment = attachment
@@ -39,7 +40,19 @@ class Command:
             print(pfx.WARNING + "Not enough arguments: pwdmn <password> <name>")
             self.quit()
         else:
-            print("bla bla bla")
+            """
+            
+            check if the password is in the database
+            if is in the database:
+                try get the key
+                use key to decrypt pwd
+            else:
+                print -> cant find the key in the database
+
+
+
+            """
+            pass
 
 class SingleAction:
 

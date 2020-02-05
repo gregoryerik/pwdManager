@@ -82,6 +82,29 @@ class Setup(Base):
 					Run()
 				else:
 					print(pfx.SUCCESS +"Setup aborted!")
+	
+	def confirmed_input(self, message):
+		correct = False
+		response = None
+
+		while not correct:
+			response = input(message)
+			confirmed = False
+
+			while not confirmed:
+				answer = input(f"Are you sure {response} is correct? (y/n): ")
+
+				if answer.lower() in ["y", "n"]:
+					if answer.lower() == "y":
+						confirmed = True
+						correct = True
+					else:
+						confirmed = True
+						correct = False
+
+		return response
+						
+
 
 	## Here is where all of the setup actions should run from
 	def all_setup_actions(self):
@@ -90,6 +113,13 @@ class Setup(Base):
 
 		data = configuration.load_data()
 		data["account"]["reset"] = False
+
+		print("Leave the following input blank for a NONE entry.")
+		key_path = self.confirmed_input("[*] Path to key locations (Program will look here first): ")
+		key_path = key_path if len(key_path.replace(" ", "")) > 0 else False
+
+		data["account"]["key_location"] = key_path
+
 
 		configuration.update_data(data)
 
