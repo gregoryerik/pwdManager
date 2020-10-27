@@ -1,5 +1,5 @@
 SQLAlchemy==1.3.12
-cryptography==2.8
+cryptography==3.2
 PyQRCode==1.2.1
 Pillow==7.0.0
 pypng==0.0.20
